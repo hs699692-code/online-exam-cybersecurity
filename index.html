@@ -1,88 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+    <title>Portal Login</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Login</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
     <style>
         body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f5f5f5;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            font-family:Arial, sans-serif;
+            background:#f5f5f5;
         }
-        #login-container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
+        #box {
+            width:300px;
+            padding:24px;
+            background:white;
+            border-radius:8px;
+            box-shadow:0 0 10px rgba(0,0,0,0.1);
         }
-        input {
-            margin: 10px 0;
-            padding: 10px;
-            width: 100%;
-            box-sizing: border-box;
+        input, select {
+            width:100%;
+            padding:10px;
+            margin:10px 0;
+            box-sizing:border-box;
         }
         button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
+            width:100%;
+            padding:10px;
+            background:#0059d6;
+            color:white;
+            border:none;
+            border-radius:4px;
+            cursor:pointer;
         }
     </style>
 </head>
+
 <body>
-    <div id="login-container">
-        <h2>Student Login</h2>
-        <input type="text" id="name" placeholder="Enter your name" required>
-        <input type="text" id="rollNumber" placeholder="Enter your roll number" required>
-        <button id="loginButton">Login</button>
-    </div>
 
-    <script>
-        document.getElementById('loginButton').addEventListener('click', function() {
-            const name = document.getElementById('name').value.trim();
-            const rollNumber = document.getElementById('rollNumber').value.trim();
+<div id="box">
+    <h3 style="text-align:center;">Login</h3>
+    <select id="role">
+        <option value="student">Student</option>
+        <option value="admin">Admin</option>
+    </select>
+    <input id="username" placeholder="Username">
+    <input id="password" type="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+</div>
 
-            if (name && rollNumber) {
-                // Redirect to the exam description page
-                window.location.href = 'exam_description.html';
-            } else {
-                alert('Please enter both name and roll number.');
-            }
-        });
+<script>
+function login(){
+    const role = document.getElementById('role').value;
 
-        // Fullscreen and tab detection
-        function enterFullscreen() {
-            if (document.documentElement.requestFullscreen) {
-                document.documentElement.requestFullscreen();
-            } else if (document.documentElement.mozRequestFullScreen) { /* Firefox */
-                document.documentElement.mozRequestFullScreen();
-            } else if (document.documentElement.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-                document.documentElement.webkitRequestFullscreen();
-            } else if (document.documentElement.msRequestFullscreen) { /* IE/Edge */
-                document.documentElement.msRequestFullscreen();
-            }
-        }
+    // Note: replace with real auth later
+    if(role === "student"){
+        window.location.href = "exam.html";
+    } else {
+        window.location.href = "admin.html";
+    }
+}
+</script>
 
-        document.addEventListener('visibilitychange', () => {
-            if (document.visibilityState === 'hidden') {
-                alert('Please stay on the exam tab.');
-            }
-        });
-
-        // Request fullscreen on load
-        window.onload = enterFullscreen;
-    </script>
 </body>
 </html>
