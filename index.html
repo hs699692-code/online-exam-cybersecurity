@@ -2,19 +2,87 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Login</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+        #login-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        input {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <div class="login-container">
-        <h2>Online Exam Login</h2>
-        <form id="loginForm">
-            <input type="text" id="name" placeholder="Enter Name" required>
-            <input type="text" id="roll" placeholder="Enter Roll Number" required>
-            <input type="text" id="course" placeholder="Enter Course" required>
-            <input type="text" id="examCode" placeholder="Enter Exam Code" required>
-            <button type="submit">Start Exam</button>
-        </form>
+    <div id="login-container">
+        <h2>Student Login</h2>
+        <input type="text" id="name" placeholder="Enter your name" required>
+        <input type="text" id="rollNumber" placeholder="Enter your roll number" required>
+        <button id="loginButton">Login</button>
     </div>
+
+    <script>
+        document.getElementById('loginButton').addEventListener('click', function() {
+            const name = document.getElementById('name').value.trim();
+            const rollNumber = document.getElementById('rollNumber').value.trim();
+
+            if (name && rollNumber) {
+                // Redirect to the exam description page
+                window.location.href = 'exam_description.html';
+            } else {
+                alert('Please enter both name and roll number.');
+            }
+        });
+
+        // Fullscreen and tab detection
+        function enterFullscreen() {
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if (document.documentElement.mozRequestFullScreen) { /* Firefox */
+                document.documentElement.mozRequestFullScreen();
+            } else if (document.documentElement.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                document.documentElement.webkitRequestFullscreen();
+            } else if (document.documentElement.msRequestFullscreen) { /* IE/Edge */
+                document.documentElement.msRequestFullscreen();
+            }
+        }
+
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'hidden') {
+                alert('Please stay on the exam tab.');
+            }
+        });
+
+        // Request fullscreen on load
+        window.onload = enterFullscreen;
+    </script>
 </body>
 </html>
