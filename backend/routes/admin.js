@@ -3,8 +3,8 @@ const router = express.Router();
 const jwt = require("jsonwebtoken");
 const Question = require("../models/question");
 
-const ADMIN_USERNAME = "Itachi";
-const ADMIN_PASSWORD = "StrongPassword123";
+const ADMIN_USERNAME = "manish";
+const ADMIN_PASSWORD = "manish@182005";
 
 // Admin login
 router.post("/login", (req, res) => {
