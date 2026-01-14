@@ -1,5 +1,7 @@
+
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://onlineexam_db_user:axMvbMqSjAx6HrSF@onlinetestcluster0.rzmm3um.mongodb.net/?appName=onlinetestCluster0";
+const uri = "mongodb+srv://onlineexam_db_user:<db_password>@onlinetestcluster0.rzmm3um.mongodb.net/?appName=onlinetestCluster0";
+
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
   serverApi: {
@@ -8,6 +10,7 @@ const client = new MongoClient(uri, {
     deprecationErrors: true,
   }
 });
+
 async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
