@@ -1,0 +1,3 @@
+MONGO_URI=mongodb+srv://onlineexam_db_user:Hitesh@18dec@onlinetestcluster0.rzmm3um.mongodb.net/onlineexamdb
+JWT_SECRET=MY_SUPER_SECRET_KEY_12345
+PORT=3000
