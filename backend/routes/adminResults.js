@@ -6,7 +6,8 @@ const Student = require("../models/student");
 // Admin get results table
 router.get("/results", async (req, res) => {
   try {
-    const results = await Result.find().populate("studentId", "name roll cheatingEvents");
+    // Populate studentId with correct fields from Student model
+    const results = await Result.find().populate("studentId", "name roll events");
     res.json({ results });
   } catch (err) {
     res.status(500).json({ message: "Server Error" });
