@@ -1,3 +1,12 @@
+// routes/exam.js
+
+const express = require("express");
+const router = express.Router();             // <-- THIS was missing
+const verifyToken = require("../middleware/auth"); // adjust path if your auth middleware is elsewhere
+const Student = require("../models/student");     // import Student model
+const Result = require("../models/result");       // import Result model
+
+// Submit exam route
 router.post("/submit", verifyToken, async (req, res) => {
   const { answers, score } = req.body;
 
@@ -24,3 +33,6 @@ router.post("/submit", verifyToken, async (req, res) => {
     res.status(500).json({ message: "Error submitting exam" });
   }
 });
+
+// Export router
+module.exports = router;
